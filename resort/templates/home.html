@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- banner -->
+	<div id="home" class="w3ls-banner">
+		<!-- banner-text -->
+		<div class="slider">
+			<div class="callbacks_container">
+				<ul class="rslides callbacks callbacks1" id="slider4">
+					{% for h in hero %}
+					<li>
+						<div class="w3layouts-banner-top {{ h.class_name }}">
+							<div class="container">
+								<div class="agileits-banner-info">
+								<h4>{{ h.name }}</h4>
+									<h3>{{ h.tag }}</h3>
+										<p>{{ h.greet }}</p>
+									<div class="agileits_w3layouts_more menu__item">
+				<a href="#" class="menu__link" data-toggle="modal" data-target="#myModal">Learn More</a>
+			</div>
+								</div>	
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+					
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+			<!--banner Slider starts Here-->
+		</div>
+		    <div class="thim-click-to-bottom">
+				<a href="#about" class="scroll">
+					<i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+				</a>
+			</div>
+	</div>	
+	<!-- //banner --> 
+<!--//Header-->
+<!-- //Modal1 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+						<!-- Modal1 -->
+							<div class="modal-dialog">
+							<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4>Resort <span>Palace</span></h4>
+										<img src="{% static 'images/1.png' %}" alt=" " class="img-responsive">
+										<h5>We know what you love</h5>
+										<p>Providing guests unique and enchanting views from their rooms with its exceptional amenities, makes Star Hotel one of bests in its kind.Try our food menu, awesome services and friendly staff while you are here.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+<!-- //Modal1 -->
+{% include 'checking.html' %}
+<!-- banner-bottom -->
+
+	<div class="banner-bottom">
+		<div class="container">	
+			<div class="agileits_banner_bottom">
+				<h3><span>Experience a good stay, enjoy fantastic offers</span> Find our friendly welcoming reception</h3>
+			</div>
+			<div class="w3ls_banner_bottom_grids">
+				<ul class="cbp-ig-grid">
+					{% for s_chart in service_chart %}
+					<li>
+						<div class="w3_grid_effect">
+							<span class="cbp-ig-icon {{ s_chart.icon }}"></span>
+							<h4 class="cbp-ig-title">{{ s_chart.name }}</h4>
+							<span class="cbp-ig-category">{{ s_chart.company_name }}</span>
+						</div>	
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+<!-- //banner-bottom -->
+<!-- /about -->
+ 	<div class="about-wthree" id="about">
+		  <div class="container">
+			  	{% for a in about %}
+				   <div class="ab-w3l-spa">
+                            <h3 class="title-w3-agileits title-black-wthree">{{ a.heading }}</h3> 
+						   <p class="about-para-w3ls">{{ a.description }}</p>
+						   <img src="{{ a.image_one.url }}" class="img-responsive" alt="Hair Salon">
+										<div class="w3l-slider-img">
+											<img src="{{ a.image_two.url }}" class="img-responsive" alt="Hair Salon">
+										</div>
+                                       <div class="w3ls-info-about">
+										    <h4>{{ a.offer }}</h4>
+											<p>{{ a.offer_description }}</p>
+										</div>
+		          </div>
+				{% endfor %}
+		   	<div class="clearfix"> </div>
+    </div>
+</div>
+ 	<!-- //about -->
+<!--sevices-->
+<div class="advantages">
+	<div class="container">
+		<div class="advantages-main">
+				<h3 class="title-w3-agileits">Our Services</h3>
+		   <div class="advantage-bottom">
+			   {% for s in service %}
+			 <div class="col-md-6 advantage-grid {{ s.position_clas }}-w3ls wow bounceInLeft" data-wow-delay="0.3s">
+			 	<div class="advantage-block ">
+					<i class="fa {{ s.icon_class }}" aria-hidden="true"></i>
+			 		<h4>{{ s.heading }} </h4>
+			 		<p>{{ s.description }}</p>
+					<p><i class="fa fa-check" aria-hidden="true"></i> {{ s.check_point_one }}</p>
+					<p><i class="fa fa-check" aria-hidden="true"></i> {{ s.check_point_two }}</p>
+			 		
+			 	</div>
+			 </div>
+			 {% endfor %}
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//sevices-->
+
+<!-- Gallery -->
+<section class="portfolio-w3ls" id="gallery">
+		 <h3 class="title-w3-agileits title-black-wthree" id="gal">Our Gallery</h3>
+		 		{% for g in gallery %}
+				<div class="col-md-3 gallery-grid gallery1">
+					<a href="{{ g.image.url }}" class="swipebox"><img src="{{ g.image.url }}" class="img-responsive" alt="/">
+						<div class="textbox">
+						<h4>{{ g.image_tag }}</h4>
+							<p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+						</div>
+				</a>
+				</div>
+				{% endfor %}
+				<div class="clearfix"> </div>
+</section>
+<!-- //gallery -->
+	 <!-- rooms & rates -->
+      <div class="plans-section" id="rooms">
+				 <div class="container">
+				 <h3 class="title-w3-agileits title-black-wthree">Rooms And Rates</h3>
+						<div class="priceing-table-main">
+				
+				{% for r in rooms %}
+				 <div class="col-md-3 price-grid">
+					<div class="price-block agile">
+						<div class="price-gd-top">
+						<img src="{{ r.image.url }}" alt=" " class="img-responsive" />
+							<h4>{{ r.name }}</h4>
+						</div>
+						<div class="price-gd-bottom">
+							   <div class="price-list">
+									<ul>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+									
+								     </ul>
+							</div>
+							<div class="price-selet">	
+								<h3><span>$</span>{{ r.price }}</h3>						
+								<a href="{% url 'booking-form' %}" class="scroll">Book Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	 <!--// rooms & rates -->
+  <!-- visitors -->
+	<div class="w3l-visitors-agile" >
+		<div class="container">
+                 <h3 class="title-w3-agileits title-black-wthree">What other visitors experienced</h3> 
+		</div>
+		<div class="w3layouts_work_grids">
+			<section class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+						{% for v in visitors %}
+						<li>
+							<div class="w3layouts_work_grid_left">
+								<img src="{{ v.image_one.url }}" alt=" " class="img-responsive" />
+								<div class="w3layouts_work_grid_left_pos">
+									<img src="{{ v.image_two.url }}" alt=" " class="img-responsive" />
+								</div>
+							</div>
+							<div class="w3layouts_work_grid_right">
+								<h4>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								<i class="fa fa-star" aria-hidden="true"></i>
+								{{ v.title }}
+								</h4>
+								<p> {{ v.description }} </p>
+								<h5>{{ v.name }}</h5>
+								<p>{{ v.location }}</p>
+							</div>
+							<div class="clearfix"> </div>
+						</li>
+						{% endfor %}
+
+						
+					</ul>
+				</div>
+			</section>
+		</div>	
+	</div>
+  <!-- visitors -->
+
+  {% endblock %}

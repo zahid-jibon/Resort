@@ -1,0 +1,32 @@
+<div id="availability-agileits">
+    <div class="col-md-3 book-form-left-w3layouts">
+        <h2>CHECK AVAILABILITY</h2>
+    </div>
+    <div class="col-md-9 book-form">
+                   <form action="{% url 'savechecking' %}" method="post">{% csrf_token %}
+                        <div class="fields-w3ls form-left-agileits-w3layouts ">
+                                <p>Room Type</p>
+                                <select class="form-control" name="roomtype">
+                                    <option>Select a Room</option>
+                                    <option name="roomtype" value="luxury room">Luxury Room</option>
+                                    <option name="roomtype" value="deluxe room">Deluxe Room</option>
+                                    <option name="roomtype" value="single room">Single Room</option>
+                                    <option name="roomtype" value="double room">Double Room</option>
+                                </select>
+                        </div>
+                        <div class="fields-w3ls form-date-w3-agileits">
+                                    <p>Arrival Date</p>
+                                        <input  id="datepicker1" name="adate" type="text" value="Select Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+                                    </div>
+                                    <div class="fields-w3ls form-date-w3-agileits">
+                                    <p>Departure Date</p>
+                                        <input  id="datepicker2" name="ddate" type="text" value="Select Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+                                    </div>
+                        
+                        <div class=" form-left-agileits-submit">
+                              <input type="submit" name='submit' value="Check Availability">
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+    </div>

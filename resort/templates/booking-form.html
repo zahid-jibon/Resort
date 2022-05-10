@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<html>
+    <body>
+<link rel="stylesheet" href="{% static 'css/booking-form.css' %}" />
+<section class="book" id="book">
+
+    <h1 class="heading">
+        <span class="txt">BOOK YOUR ROOM NOW</span>
+        
+    </h1>
+
+    <div class="row sch">
+
+        <form action="" class="formm" id="book-form" method="POST">
+            {% csrf_token %}
+            
+            <div class="row">
+                <div class="inputBox">
+                    <h3>Name</h3>
+                    <input {{ form.name }} 
+                    {% for err in form.name.errors %}
+						<small class="text-danger ml-3">{{ err }}</small>
+					{% endfor %}
+                </div>
+                <div class="inputBox">
+                    <h3>Email</h3>
+                    
+                    {{ form.email }} 
+                    {% for err in form.email.errors %}
+						<small class="text-danger ml-3">{{ err }}</small>
+					{% endfor %}
+                </div>
+                <div class="inputBox">
+                    <h3>Number</h3>
+                    {{ form.number }}
+                    {% for err in form.number.errors %}
+                        <small class="text-danger ml-3">{{ err }}</small>
+                    {% endfor %}
+                </div>
+                <div class="inputBox">
+                    <h3>Check In</h3>
+                    {{ form.check_in }}
+                    
+                    {% for err in form.check_in.errors %}
+                        <small class="text-danger ml-3">{{ err }}</small>
+                    {% endfor %}
+                </div>
+                <div class="inputBox">
+                    <h3>Check Out</h3>
+                    {{ form.check_out }}
+                
+                    {% for err in form.check_out.errors %}
+                        <small class="text-danger ml-3">{{ err }}</small>
+                    {% endfor %}
+                </div>
+                <div class="inputBox">
+                    <h3>Room Type with Price</h3>
+                    {{ form.room_price }}
+                    
+                    {% for err in form.room_price.errors %}
+                        <small class="text-danger ml-3">{{ err }}</small>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <input type="submit" class="btn" id="book-btn" value="book your room now">
+
+        </form>
+    </div>
+
+    
+
+
+
+</section>
+</body>
+</html>
+
+{% endblock %}
